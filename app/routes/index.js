@@ -50,8 +50,8 @@ module.exports = function (app, passport) {
 			failureRedirect: '/login'
 		}));
 
-	app.route('/api/:id/clicks')
-		.get(isLoggedIn, clickHandler.getClicks)
-		.post(isLoggedIn, clickHandler.addClick)
-		.delete(isLoggedIn, clickHandler.resetClicks);
+	app.route('/new/:link(*)?')
+		.get(clickHandler.addLinkNew);
+		
+   	app.get('/:link', clickHandler.getLinks);
 };
